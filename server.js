@@ -10,15 +10,12 @@ app.use(express.json())
 app.use('/', express.static(__dirname + '/Frontend'))
 app.use('/tasks', taskRoute)
 
-
-
-
-
+const port = process.env.PORT || 8080;
 
 db.sync()
   .then(() => {
-    app.listen(3232, function(){
-        console.log("Listening to port 3232.")
+    app.listen(port, function(){
+        console.log("Listening to port "+port)
     })
   })
   .catch((err) => {
